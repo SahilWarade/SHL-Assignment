@@ -1,0 +1,600 @@
+[
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Technical Skills",
+    "competencies": [
+      "Communication",
+      "Leadership"
+    ],
+    "description": "SHL’s AI-powered suite of communication and language proficiency tests automates language assessment, helping you to faster find and hire the right people.",
+    "duration": "30 minutes",
+    "id": "ai-powered-language-proficiency-tests",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/skills-and-simulations/language-evaluation/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "AI-powered Language Proficiency Tests",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Technical Skills"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/skills-and-simulations/language-evaluation/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Technical Skills",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "SHL’s Call Center Simulations and assessment tool helps you to identify agents with the critical competencies and personality in a real-life call center environment.",
+    "duration": "30 minutes",
+    "id": "assess-agents-in-a-real-contact-center-environment",
+    "industry": [
+      "Technology",
+      "Healthcare",
+      "Banking",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "Customer Service Representative"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/skills-and-simulations/call-center-simulations/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Assess Agents in a Real Contact Center Environment",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Technical Skills"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/skills-and-simulations/call-center-simulations/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Technical Skills",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "With our computer literacy test, assess candidates' Microsoft Office proficiency, such as working with graphs and charts, creating presentations, and more.",
+    "duration": "30 minutes",
+    "id": "business-skills-assessment-tests-for-deep-insights",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/skills-and-simulations/business-skills/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Business Skills Assessment Tests for Deep Insights",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Technical Skills"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/skills-and-simulations/business-skills/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Technical Skills",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "SHL Technical Skills assessment helps you to measure knowledge of 180+ technology concepts in less than 15 minutes for Full Stack, Front-end, Data Science, DevOps, and more roles.",
+    "duration": "15 minutes",
+    "id": "fast-simple-technical-skill-assessment",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "Software Engineer"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/skills-and-simulations/technical-skills/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "15 Minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Fast, Simple Technical Skill Assessment",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Software Engineering",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Technical Skills"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/skills-and-simulations/technical-skills/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Talent Assessment",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "Our end-to-end virtual assessment and development centers provide the most efficient and accurate way of identifying potential from anywhere in the world.",
+    "duration": "30 minutes",
+    "id": "go-digital-and-deliver-a-superior-experience",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/assessment-and-development-centers/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Go Digital and Deliver a Superior Experience",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Talent Assessment"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/assessment-and-development-centers/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Talent Assessment",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "SHL's Video Feedback is a scalable, automated way for brands to instantly feedback to thousands of candidates, with no extra time investment.",
+    "duration": "30 minutes",
+    "id": "make-hiring-personal-to-delight-your-candidates",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/video-feedback/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Make Hiring Personal To Delight Your Candidates",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Talent Assessment"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/video-feedback/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Questionnaire",
+    "category": "Personality & Behavior",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "Our occupational personality questionnaire helps you to get accurate, bias-free assessments by matching individual working preferences to business requirements.",
+    "duration": "20 minutes",
+    "id": "opq",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/personality-assessment/shl-occupational-personality-questionnaire-opq/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "20 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "SHL Occupational Personality Questionnaire (OPQ)",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Personality & Behavior",
+      "OPQ"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/personality-assessment/shl-occupational-personality-questionnaire-opq/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Coding Simulation",
+    "category": "Technical Skills",
+    "competencies": [
+      "Problem Solving",
+      "Leadership"
+    ],
+    "description": "Shortlist 45% more candidates within half the usual hiring time with our coding skills assessment for full stack, data engineering, front-end and more roles.",
+    "duration": "45 minutes",
+    "id": "shl-coding-skills-assessment-and-simulations",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "Software Engineer"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/skills-and-simulations/coding-simulations/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "45 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "SHL Coding Skills Assessment and Simulations",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Software Engineering",
+      "Situational Judgment",
+      "Problem Solving"
+    ],
+    "tags": [
+      "Technical Skills"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/skills-and-simulations/coding-simulations/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Personality & Behavior",
+    "competencies": [
+      "Adaptability",
+      "Leadership"
+    ],
+    "description": "SHL's Global Skills Assessment measures 96 behavioral skills in 15 minutes. Objective data for onboarding, upskilling, reskilling, and workforce planning.",
+    "duration": "15 minutes",
+    "id": "shl-global-skills-assessment",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/behavioral-assessments/global-skills-assessment-gsa/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "15 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "SHL Global Skills Assessment",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Personality & Behavior"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/behavioral-assessments/global-skills-assessment-gsa/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Questionnaire",
+    "category": "Personality & Behavior",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "Build an engaged, high-performing workforce using our motivation questionnaire (MQ) by matching individual employee motivation to team and organizational goals.",
+    "duration": "20 minutes",
+    "id": "shl-motivational-questionnaire",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/personality-assessment/shl-motivation-questionnaire-mq/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "20 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "SHL Motivational Questionnaire",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Personality & Behavior"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/personality-assessment/shl-motivation-questionnaire-mq/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Personality & Behavior",
+    "competencies": [
+      "Decision Making",
+      "Leadership"
+    ],
+    "description": "With our Realistic Job Previews, candidates can self-assess their fit with the role and with your company through a set of tasks and culture-based questions.",
+    "duration": "30 minutes",
+    "id": "shl-realistic-job-previews",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/behavioral-assessments/realistic-job-and-culture-previews-rjp/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "SHL Realistic Job Previews",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment",
+      "Decision Making"
+    ],
+    "tags": [
+      "Personality & Behavior"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/behavioral-assessments/realistic-job-and-culture-previews-rjp/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Scenario-Based Simulation",
+    "category": "Personality & Behavior",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "Using our Situational Judgment Tests (SJT), you can measure candidates' behavioral fit to a given role by assessing their response to a specific work situation.",
+    "duration": "30 minutes",
+    "id": "situational-judgement-tests",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/behavioral-assessments/situation-judgement-tests-sjt/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Situational Judgement Tests",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Personality & Behavior"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/behavioral-assessments/situation-judgement-tests-sjt/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Technical Skills",
+    "competencies": [
+      "Collaboration",
+      "Communication",
+      "Leadership"
+    ],
+    "description": "SHL SVAR is a spoken language assessment that uses AI-driven scoring to deliver fast, consistent results for hiring at scale.",
+    "duration": "15 minutes",
+    "id": "svar-assessment-measure-real-spoken-language-at-scale",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/skills-and-simulations/language-evaluation/svar/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "15 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "SVAR Assessment:Measure Real Spoken Language, at Scale",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Technical Skills"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/skills-and-simulations/language-evaluation/svar/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Personality & Behavior",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "Learn how the Universal Competency Framework (UCF), which provides a rational, consistent, and practical basis for understanding people’s behaviors, can help you.",
+    "duration": "15 minutes",
+    "id": "universal-competency-framework-ucf",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/assessments/behavioral-assessments/universal-competency-framework/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "15 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Universal Competency Framework (UCF)",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Personality & Behavior"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/assessments/behavioral-assessments/universal-competency-framework/"
+  },
+  {
+    "adaptive": false,
+    "assessment_type": "Multiple Choice",
+    "category": "Talent Assessment",
+    "competencies": [
+      "Leadership"
+    ],
+    "description": "Smart screening through recorded video interviews helps you shortlist top talent faster and uncover hidden gems you might have missed.",
+    "duration": "30 minutes",
+    "id": "video-interview-thousands-of-candidates-in-minutes",
+    "industry": [
+      "Technology",
+      "Retail",
+      "Legal"
+    ],
+    "job_roles": [
+      "All Professions"
+    ],
+    "languages": [
+      "English"
+    ],
+    "metadata": {
+      "crawled_url": "https://www.shl.com/products/video-interviews/smart-interview-on-demand/",
+      "raw_adaptive_text": "No",
+      "raw_duration_text": "30 minutes",
+      "raw_remote_text": "Yes"
+    },
+    "name": "Video Interview Thousands of Candidates in Minutes",
+    "remote_testing": true,
+    "skills": [
+      "Coding",
+      "Situational Judgment"
+    ],
+    "tags": [
+      "Talent Assessment"
+    ],
+    "test_level": "Graduate, Manager, Professional",
+    "url": "https://www.shl.com/products/video-interviews/smart-interview-on-demand/"
+  }
+]

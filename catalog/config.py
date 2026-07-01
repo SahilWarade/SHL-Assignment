@@ -34,18 +34,22 @@ os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
 # Run mode
 # Set MOCK_MODE = True to run the crawler against local generated mock pages (fast, offline, deterministic)
 # Set MOCK_MODE = False to crawl the live SHL website
-MOCK_MODE = True
+MOCK_MODE = False
 
 # Seed URLs for crawling
 # When MOCK_MODE is True, the scraper will map these URLs to custom mock HTML pages.
 # When MOCK_MODE is False, the scraper will visit these URLs directly.
 SEED_URLS = [
-    f"{BASE_URL}/en/solutions/products/verify-g-plus/",
-    f"{BASE_URL}/en/solutions/products/occupational-personality-questionnaire/",
-    f"{BASE_URL}/en/solutions/products/java-8-new/",
-    f"{BASE_URL}/en/solutions/products/verify-numerical-reasoning/",
-    f"{BASE_URL}/en/solutions/products/verify-verbal-reasoning/",
-    f"{BASE_URL}/en/solutions/products/verify-deductive-reasoning/",
-    f"{BASE_URL}/en/solutions/products/motivation-questionnaire/",
-    f"{BASE_URL}/en/solutions/products/situational-judgement/",
+    f"{BASE_URL}/products/assessments/personality-assessment/shl-occupational-personality-questionnaire-opq/",
+    f"{BASE_URL}/products/assessments/personality-assessment/shl-motivation-questionnaire-mq/",
+    f"{BASE_URL}/products/assessments/behavioral-assessments/situation-judgement-tests-sjt/",
+    f"{BASE_URL}/products/assessments/behavioral-assessments/universal-competency-framework/",
+    f"{BASE_URL}/products/assessments/behavioral-assessments/global-skills-assessment-gsa/",
+    f"{BASE_URL}/products/assessments/skills-and-simulations/coding-simulations/",
+    f"{BASE_URL}/products/assessments/skills-and-simulations/language-evaluation/",
+    f"{BASE_URL}/products/assessments/skills-and-simulations/call-center-simulations/",
+    f"{BASE_URL}/products/assessments/skills-and-simulations/business-skills/",
+    f"{BASE_URL}/products/assessments/skills-and-simulations/technical-skills/",
+    f"{BASE_URL}/products/assessments/cognitive-assessments/",
+    f"{BASE_URL}/products/assessments/job-focused-assessments/",
 ]

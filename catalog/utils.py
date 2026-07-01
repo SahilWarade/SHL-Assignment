@@ -3,6 +3,7 @@ import logging
 import os
 import re
 import time
+from typing import List, Optional
 from urllib.parse import urljoin
 import requests
 from catalog import config
@@ -126,7 +127,7 @@ def generate_slug_id(name: str) -> str:
     s = name.lower().strip()
     
     # Special manual maps for SHL standard products to ensure high compatibility
-    if "verify" in s and "g" in s:
+    if "verify" in s and re.search(r"\bg\b|\bg\+", s):
         return "verify-g"
     if "opq" in s or "occupational personality" in s:
         # Match opq32, opq32r, etc.

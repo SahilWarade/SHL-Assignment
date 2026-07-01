@@ -1,0 +1,27 @@
+# Environments and variables
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# Application Caches & Logs
+logs/*.log
+catalog/raw/
+catalog/processed/
+
+# IDE files
+.vscode/
+.idea/
+.DS_Store

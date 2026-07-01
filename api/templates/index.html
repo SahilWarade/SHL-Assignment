@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHL Assessment Recommender</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #111827 100%);
+            --panel-bg: rgba(17, 24, 39, 0.7);
+            --card-bg: rgba(31, 41, 55, 0.6);
+            --accent-green: #10b981;
+            --accent-green-hover: #34d399;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(16, 185, 129, 0.15);
+            --card-radius: 16px;
+            --button-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Header Style */
+        header {
+            padding: 20px 40px;
+            background: rgba(17, 24, 39, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #a7f3d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Main Layout */
+        .container {
+            flex: 1;
+            display: flex;
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            gap: 20px;
+            height: calc(100vh - 80px);
+        }
+
+        /* Chat Panel */
+        .chat-panel {
+            flex: 1.3;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .chat-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(31, 41, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-title {
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .turn-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Message Bubbles */
+        .message {
+            max-width: 80%;
+            padding: 14px 18px;
+            border-radius: var(--card-radius);
+            line-height: 1.5;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .message.user {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.assistant {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            white-space: pre-line;
+        }
+
+        .message.assistant a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .message.assistant a:hover {
+            text-decoration: underline;
+        }
+
+        /* Chat Input */
+        .chat-input-container {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            background: rgba(31, 41, 55, 0.3);
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 12px;
+            position: relative;
+        }
+
+        textarea {
+            flex: 1;
+            background: rgba(17, 24, 39, 0.9);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 14px 18px;
+            border-radius: var(--button-radius);
+            resize: none;
+            height: 54px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            border-color: var(--accent-green-hover);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, var(--accent-green) 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 0 24px;
+            border-radius: var(--button-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        .send-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Recommendations Panel */
+        .rec-panel {
+            flex: 1;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .rec-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(31, 41, 55, 0.3);
+        }
+
+        .rec-title {
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rec-list {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .no-recs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-muted);
+            text-align: center;
+            gap: 12px;
+            padding: 40px;
+        }
+
+        .rec-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            border-radius: var(--card-radius);
+            padding: 20px;
+            transition: all 0.2s ease-in-out;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .rec-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+        }
+
+        .rec-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .rec-meta {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .badge.green {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+        }
+
+        .rec-link {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--accent-green);
+            padding: 8px 16px;
+            border-radius: var(--button-radius);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .rec-link:hover {
+            background: var(--accent-green);
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Suggestions Row */
+        .suggestions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .suggest-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .suggest-tag:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+                overflow-y: auto;
+            }
+            .chat-panel {
+                height: 600px;
+                flex: none;
+            }
+            .rec-panel {
+                height: 400px;
+                flex: none;
+            }
+            header {
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .chat-panel {
+                height: 500px;
+            }
+            .message {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="status-dot"></div>
+            <h1>SHL Recommender Agent</h1>
+        </div>
+        <div class="turn-badge" id="turnBadge">Turns: 0</div>
+    </header>
+
+    <div class="container">
+        <!-- Left Panel: Chat -->
+        <div class="chat-panel">
+            <div class="chat-header">
+                <span class="chat-title">Consultation Dialogue</span>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message assistant">
+                    Welcome! I am an SHL Talent Assessment Consultant. 
+                    I can help you search, compare, and select official SHL assessments.
+                    
+                    To start, could you please specify the target job role (e.g. Java Backend Developer, Sales Manager) you are hiring for?
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea id="userInput" placeholder="Ask about assessments or describe your role..."></textarea>
+                    <button class="send-btn" id="sendBtn">Send</button>
+                </div>
+                <div class="suggestions">
+                    <div class="suggest-tag" onclick="useSuggestion('I need to hire a Java Developer')">Hire Java Developer</div>
+                    <div class="suggest-tag" onclick="useSuggestion('Actually include personality assessments')">Include Personality</div>
+                    <div class="suggest-tag" onclick="useSuggestion('Compare OPQ32 and Verify G')">Compare OPQ & Verify G</div>
+                    <div class="suggest-tag" onclick="useSuggestion('Write python code to sort list')">Test Out of Scope</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Recommendations -->
+        <div class="rec-panel">
+            <div class="rec-header">
+                <span class="rec-title">Recommended Assessments</span>
+            </div>
+            <div class="rec-list" id="recList">
+                <div class="no-recs" id="noRecs">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted); opacity: 0.5;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
+                    <span>No recommendations loaded yet. Provide more requirements to retrieve matching tests.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const turnBadge = document.getElementById('turnBadge');
+        const recList = document.getElementById('recList');
+        const noRecs = document.getElementById('noRecs');
+
+        let messageHistory = [
+            {
+                role: "assistant",
+                content: "Welcome! I am an SHL Talent Assessment Consultant. I can help you search, compare, and select official SHL assessments. To start, could you please specify the target job role (e.g. Java Backend Developer, Sales Manager) you are hiring for?"
+            }
+        ];
+
+        let turnCount = 0;
+
+        function updateTurnBadge() {
+            const userTurns = messageHistory.filter(m => m.role === 'user').length;
+            turnBadge.innerText = `Turns: ${userTurns}`;
+        }
+
+        function appendRateLimitMessage(detail) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', 'assistant');
+            msgDiv.style.background = 'rgba(239, 68, 68, 0.15)';
+            msgDiv.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+            msgDiv.style.color = '#ef4444';
+            msgDiv.style.borderBottomLeftRadius = '4px';
+            msgDiv.innerText = `⚠️ Rate Limiting: ${detail}`;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function appendMessage(role, content) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', role);
+            
+            // Format links in assistant response to be HTML anchors
+            if (role === 'assistant') {
+                msgDiv.innerHTML = formatMarkdownLinks(content);
+            } else {
+                msgDiv.innerText = content;
+            }
+            
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function formatMarkdownLinks(text) {
+            // Replace [Name](URL) with <a href="URL" target="_blank">Name</a>
+            const mdLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+            return text.replace(mdLinkRegex, '<a href="$2" target="_blank">$1</a>');
+        }
+
+        function updateRecommendations(recommendations) {
+            if (!recommendations || recommendations.length === 0) {
+                return; // Keep existing or show placeholder
+            }
+            
+            // Clear current list
+            recList.innerHTML = '';
+            
+            recommendations.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('rec-card');
+                
+                card.innerHTML = `
+                    <div class="rec-name">${item.name}</div>
+                    <div class="rec-meta">
+                        <span class="badge green">${item.test_type}</span>
+                    </div>
+                    <a href="${item.url}" class="rec-link" target="_blank">Explore Catalog Page</a>
+                `;
+                recList.appendChild(card);
+            });
+        }
+
+        async function handleSend() {
+            const text = userInput.value.trim();
+            if (!text) return;
+            
+            userInput.value = '';
+            appendMessage('user', text);
+            messageHistory.push({ role: 'user', content: text });
+            updateTurnBadge();
+            
+            // Add typing placeholder
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('message', 'assistant');
+            typingDiv.innerText = 'Thinking...';
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ messages: messageHistory })
+                });
+
+                chatMessages.removeChild(typingDiv);
+
+                if (!response.ok) {
+                    if (response.status === 429) {
+                        const errorData = await response.json();
+                        appendRateLimitMessage(errorData.detail);
+                        return;
+                    }
+                    throw new Error('API server returned error');
+                }
+
+                const data = await response.json();
+                appendMessage('assistant', data.reply);
+                messageHistory.push({ role: 'assistant', content: data.reply });
+                
+                if (data.recommendations && data.recommendations.length > 0) {
+                    updateRecommendations(data.recommendations);
+                }
+            } catch (err) {
+                chatMessages.removeChild(typingDiv);
+                appendMessage('assistant', 'Error connecting to server. Please ensure the local backend is running.');
+            }
+        }
+
+        function useSuggestion(text) {
+            userInput.value = text;
+            handleSend();
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+            }
+        });
+    </script>
+</body>
+</html>
