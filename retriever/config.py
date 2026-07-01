@@ -20,6 +20,7 @@ EMBEDDING_DIMENSION = 384  # Dimension for both BGE-small and all-MiniLM-L6-v2
 # SEARCH SETTINGS
 TOP_K = 10
 
-# Ensure directories exist
-os.makedirs(LOG_DIR, exist_ok=True)
-os.makedirs(VECTOR_STORE_DIR, exist_ok=True)
+# Ensure directories exist (skip on Vercel read-only filesystem)
+if not os.environ.get("VERCEL"):
+    os.makedirs(LOG_DIR, exist_ok=True)
+    os.makedirs(VECTOR_STORE_DIR, exist_ok=True)

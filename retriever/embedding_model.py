@@ -1,7 +1,16 @@
+import os
 from typing import List
 import numpy as np
-from sentence_transformers import SentenceTransformer
 from retriever import config
+
+try:
+    # Skip loading heavy PyTorch sentence-transformers on Vercel serverless environment
+    if os.environ.get("VERCEL"):
+        raise ImportError("Vercel environment: skipping heavy ML imports")
+    from sentence_transformers import SentenceTransformer
+    HAS_TRANSFORMERS = True
+except ImportError:
+    HAS_TRANSFORMERS = False
 
 
 class EmbeddingModel:
@@ -12,7 +21,8 @@ class EmbeddingModel:
 
     def __init__(self):
         self.model = None
-        self._load_model()
+        if HAS_TRANSFORMERS:
+            self._load_model()
 
     def _load_model(self):
         """Attempts to load the configured embedding model with a fallback mechanism."""
@@ -36,7 +46,9 @@ class EmbeddingModel:
         Vectors are L2-normalized to allow FAISS Inner Product to represent Cosine Similarity.
         """
         if not self.model:
-            raise RuntimeError("Embedding model is not initialized.")
+            # Stub embedding vectors when running without heavy PyTorch
+            dim = getattr(config, "EMBEDDING_DIMENSION", 384)
+            return np.zeros((len(texts), dim), dtype=np.float32)
             
         # normalize_embeddings=True guarantees unit vectors (L2 norm = 1.0)
         embeddings = self.model.encode(

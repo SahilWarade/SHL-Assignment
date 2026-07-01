@@ -3,33 +3,41 @@ import os
 import pickle
 import re
 from typing import Any, Dict, Optional
-import numpy as np
 from retriever import config
+
+try:
+    import numpy as np
+    HAS_NUMPY = True
+except ImportError:
+    np = None
+    HAS_NUMPY = False
 
 # --- Setup Logger ---
 def setup_logging():
     """Configures logging to logs/retriever.log and stdout."""
-    os.makedirs(config.LOG_DIR, exist_ok=True)
-    
     logger = logging.getLogger("shl_retriever")
     logger.setLevel(logging.INFO)
     
     if not logger.handlers:
-        fh = logging.FileHandler(config.LOG_FILE, encoding="utf-8")
-        fh.setLevel(logging.INFO)
-        
-        ch = logging.StreamHandler()
-        ch.setLevel(logging.INFO)
-        
         formatter = logging.Formatter(
             "[%(asctime)s] %(levelname)s [%(filename)s:%(lineno)d]: %(message)s",
             datefmt="%Y-%m-%d %H:%M:%S"
         )
-        fh.setFormatter(formatter)
-        ch.setFormatter(formatter)
         
-        logger.addHandler(fh)
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.INFO)
+        ch.setFormatter(formatter)
         logger.addHandler(ch)
+        
+        if not os.environ.get("VERCEL"):
+            try:
+                os.makedirs(config.LOG_DIR, exist_ok=True)
+                fh = logging.FileHandler(config.LOG_FILE, encoding="utf-8")
+                fh.setLevel(logging.INFO)
+                fh.setFormatter(formatter)
+                logger.addHandler(fh)
+            except Exception:
+                pass
         
     return logger
 
@@ -46,11 +54,13 @@ def normalize_query(query: str) -> str:
     return q
 
 
-def cosine_similarity(v1: np.ndarray, v2: np.ndarray) -> float:
+def cosine_similarity(v1, v2) -> float:
     """
     Computes cosine similarity between two 1-D numpy arrays.
     If they are already L2 normalized, this is simply the dot product.
     """
+    if not HAS_NUMPY:
+        return 0.0
     norm_v1 = np.linalg.norm(v1)
     norm_v2 = np.linalg.norm(v2)
     if norm_v1 == 0.0 or norm_v2 == 0.0:
@@ -59,15 +69,19 @@ def cosine_similarity(v1: np.ndarray, v2: np.ndarray) -> float:
 
 
 # --- File Persistence Helpers ---
-def save_embeddings(embeddings: np.ndarray, filepath: str) -> None:
+def save_embeddings(embeddings, filepath: str) -> None:
     """Saves dense embedding vectors to a numpy .npy file."""
+    if not HAS_NUMPY:
+        return
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     np.save(filepath, embeddings)
     logger.info(f"Saved {embeddings.shape} embedding matrix to: {filepath}")
 
 
-def load_embeddings(filepath: str) -> Optional[np.ndarray]:
+def load_embeddings(filepath: str):
     """Loads dense embedding vectors from a numpy .npy file."""
+    if not HAS_NUMPY:
+        return None
     if not os.path.exists(filepath):
         logger.warning(f"Embedding matrix file not found: {filepath}")
         return None

@@ -1,0 +1,4 @@
+# Machine learning libraries for local high-fidelity vector search
+# Omitted from requirements.txt to bypass Vercel serverless bundle limits
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
