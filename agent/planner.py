@@ -1,6 +1,5 @@
 import os
 from typing import Any, Dict, List, Optional
-import google.generativeai as genai
 from agent.models import AgentAction, AgentResponse, Message, ConversationState
 from agent import tools
 from agent.prompts.system_prompt import SYSTEM_PROMPT
@@ -11,6 +10,13 @@ from agent.prompts.refusal_prompt import REFUSAL_PROMPT
 from agent.prompts.planner_prompt import PLANNER_PROMPT
 from agent.utils import logger
 
+try:
+    import google.generativeai as genai
+    HAS_GENAI = True
+except ImportError:
+    genai = None
+    HAS_GENAI = False
+
 
 class AgentPlanner:
     """
@@ -19,13 +25,19 @@ class AgentPlanner:
     """
 
     def __init__(self, api_key: Optional[str] = None):
-        self.api_key = api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+        self.api_key = (api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or "").strip()
+        self.gemini_ready = False
         self._setup_gemini()
 
     def _setup_gemini(self):
-        """Initializes Gemini configure settings."""
-        if self.api_key:
-            genai.configure(api_key=self.api_key)
+        """Initializes Gemini configure settings only if API key is valid."""
+        if self.api_key and HAS_GENAI:
+            try:
+                genai.configure(api_key=self.api_key)
+                self.gemini_ready = True
+            except Exception as e:
+                logger.warning(f"Failed to configure Gemini: {e}. Using Consultant Simulator.")
+                self.gemini_ready = False
 
     def detect_comparison_targets(self, query: str) -> List[str]:
         """Extracts target assessment slugs that the user wants to compare."""
@@ -199,7 +211,7 @@ class AgentPlanner:
 
         # Compile response text
         reply = ""
-        if self.api_key:
+        if self.gemini_ready:
             # Setup prompt and run Gemini
             system_instruction = SYSTEM_PROMPT + "\n" + PLANNER_PROMPT
             
