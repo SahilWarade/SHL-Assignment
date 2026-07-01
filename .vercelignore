@@ -1,0 +1,28 @@
+# Exclude local virtual environments
+.venv/
+venv/
+env/
+ENV/
+.vercel/
+
+# Exclude python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Exclude local run logs and raw scraping files
+logs/
+catalog/raw/
+catalog/processed/
+
+# Exclude source control
+.git/
+.gitignore
+.gitattributes
+
+# Exclude test files not needed in production serverless run
+tests/
